@@ -6,8 +6,7 @@ from rest_framework.validators import UniqueValidator
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     username = serializers.CharField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
-    password = serializers.CharField(min_length=8)
-
+    password = serializers.CharField(min_length=8, style={'input_type': 'password', 'placeholder': 'Password'})
 
 
     def create(self, validated_data):
